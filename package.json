@@ -1,0 +1,26 @@
+{
+  "name": "keys",
+  "version": "1.0.0",
+  "description": "Create an array of the owned/enumerable keys of an input object.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ndhoule/keys.git"
+  },
+  "keywords": [
+    "component",
+    "functional",
+    "keys"
+  ],
+  "author": "Nathan Houle <nathan@nathanhoule.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ndhoule/keys/issues"
+  },
+  "homepage": "https://github.com/ndhoule/keys",
+  "dependencies": {},
+  "devDependencies": {
+    "deep-eql": "^0.1.3",
+    "mocha": "^2.1.0"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "keys",
+  "repo": "ndhoule/keys",
+  "version": "1.0.0",
+  "description": "Create an array of the owned/enumerable keys of an input object.",
+  "keywords": [
+    "functional",
+    "keys"
+  ],
+  "license": "MIT",
+  "scripts": ["index.js"],
+  "dependencies": {},
+  "development": {
+    "mochajs/mocha": "^2.1.0",
+    "chaijs/deep-eql": "^0.1.3"
+  }
+}
