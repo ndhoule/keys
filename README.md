@@ -13,4 +13,4 @@ component install ndhoule/keys
 Released under the [MIT license](LICENSE.md).
 
 [circleci-link]: https://circleci.com/gh/ndhoule/keys
-[circleci-badge]: https://circleci.com/gh/ndhoule/keys.svg?style=f3fdf66a9d469d5048e933df81edbd88d459c9cd
+[circleci-badge]: https://circleci.com/gh/ndhoule/keys.svg?style=svg&circle-token=f3fdf66a9d469d5048e933df81edbd88d459c9cd
