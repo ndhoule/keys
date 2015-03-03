@@ -1,4 +1,4 @@
-# keys [![Circle CI][circleci-badge]][circleci-link]
+# keys [![CI][ci-badge]][ci-link]
 
 Create an array of the owned/enumerable keys of an input object.
 
@@ -12,5 +12,5 @@ component install ndhoule/keys
 
 Released under the [MIT license](LICENSE.md).
 
-[circleci-link]: https://circleci.com/gh/ndhoule/keys
-[circleci-badge]: https://circleci.com/gh/ndhoule/keys.svg?style=svg&circle-token=f3fdf66a9d469d5048e933df81edbd88d459c9cd
+[ci-link]: https://travis-ci.org/ndhoule/keys
+[ci-badge]: https://travis-ci.org/ndhoule/keys.svg?branch=master
