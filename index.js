@@ -56,10 +56,6 @@ module.exports = function keys(source) {
     return [];
   }
 
-  if (typeof Object.keys === 'function') {
-    return Object.keys(source);
-  }
-
   var results = [];
 
   for (var key in source) {
