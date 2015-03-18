@@ -1,21 +1,128 @@
 'use strict';
 
 /**
+ * charAt reference.
+ */
+
+var strCharAt = String.prototype.charAt;
+
+/**
+ * Returns the character at a given index.
+ *
+ * @param {string} str
+ * @param {number} index
+ * @return {string|undefined}
+ */
+
+// TODO: Move to a library
+var charAt = function(str, index) {
+  return strCharAt.call(str, index);
+};
+
+/**
  * hasOwnProperty reference.
  */
 
-var has = Object.prototype.hasOwnProperty;
+var hop = Object.prototype.hasOwnProperty;
 
 /**
- * isObject
- *
- * @param {*} val
- * @return {boolean} Returns true if the value is an object
+ * Object.prototype.toString reference.
  */
 
-// TODO: Move into library
-var isObject = function isObject(val) {
-  return val != null && typeof val === 'object';
+var toStr = Object.prototype.toString;
+
+/**
+ * hasOwnProperty, wrapped as a function.
+ *
+ * @name has
+ * @api private
+ * @param {*} context
+ * @param {string|number} prop
+ * @return {boolean}
+ */
+
+// TODO: Move to a library
+var has = function has(context, prop) {
+  return hop.call(context, prop);
+};
+
+/**
+ * Returns true if a value is a string, otherwise false.
+ *
+ * @name isString
+ * @api private
+ * @param {*} val
+ * @return {boolean}
+ */
+
+// TODO: Move to a library
+var isString = function isString(val) {
+  return toStr.call(val) === '[object String]';
+};
+
+/**
+ * Returns true if a value is array-like, otherwise false. Array-like means a
+ * value is not null, undefined, or a function, and has a numeric `length`
+ * property.
+ *
+ * @name isArrayLike
+ * @api private
+ * @param {*} val
+ * @return {boolean}
+ */
+
+// TODO: Move to a library
+var isArrayLike = function isArrayLike(val) {
+  return val != null && (typeof val !== 'function' && typeof val.length === 'number');
+};
+
+
+/**
+ * indexKeys
+ *
+ * @name indexKeys
+ * @api private
+ * @param {} target
+ * @param {} pred
+ * @return {Array}
+ */
+
+var indexKeys = function indexKeys(target, pred) {
+  pred = pred || has;
+  var results = [];
+
+  for (var i = 0, len = target.length; i < len; i += 1) {
+    if (pred(target, i)) {
+      results.push(String(i));
+    }
+  }
+
+  return results;
+};
+
+/**
+ * Returns an array of all the owned
+ *
+ * @name objectKeys
+ * @api private
+ * @param {*} target
+ * @param {Function} pred Predicate function used to include/exclude values from
+ * the resulting array.
+ * @return {Array}
+ */
+
+var objectKeys = function objectKeys(target, pred) {
+  pred = pred || has;
+  var results = [];
+
+
+  for (var key in target) {
+    if (pred(target, key)) {
+      results.push(String(key));
+    }
+  }
+
+  return results;
 };
 
 /**
@@ -52,17 +159,19 @@ var isObject = function isObject(val) {
  */
 
 module.exports = function keys(source) {
-  if (!isObject(source)) {
+  if (source == null) {
     return [];
   }
 
-  var results = [];
-
-  for (var key in source) {
-    if (has.call(source, key)) {
-      results.push(key);
-    }
+  // IE6-8 compatibility (string)
+  if (isString(source)) {
+    return indexKeys(source, charAt);
   }
 
-  return results;
+  // IE6-8 compatibility (arguments)
+  if (isArrayLike(source)) {
+    return indexKeys(source, has);
+  }
+
+  return objectKeys(source);
 };
