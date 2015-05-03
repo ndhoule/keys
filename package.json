@@ -1,5 +1,5 @@
 {
-  "name": "keys",
+  "name": "@ndhoule/keys",
   "version": "1.1.0",
   "description": "Create an array of the owned/enumerable keys of an input object.",
   "main": "index.js",
