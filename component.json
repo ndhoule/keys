@@ -1,7 +1,7 @@
 {
   "name": "keys",
   "repo": "ndhoule/keys",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Create an array of the owned/enumerable keys of an input object.",
   "keywords": [
     "functional",

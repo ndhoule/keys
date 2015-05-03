@@ -1,3 +1,10 @@
+## 1.1.1
+
+- Update Makefile targets
+- Ensure npm@>=2.7.0 on Travis CI
+- Update installation instructions in README
+- Rename to scoped package for npm package publish
+
 ## 1.1.0
 
 - Now works on IE 6-8
