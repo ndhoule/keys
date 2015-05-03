@@ -5,7 +5,8 @@ Create an array of the owned/enumerable keys of an input object.
 ## Installation
 
 ```sh
-component install ndhoule/keys
+$ component install ndhoule/keys
+$ npm install @ndhoule/keys
 ```
 
 ## License
