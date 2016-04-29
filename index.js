@@ -1,10 +1,8 @@
 'use strict';
 
-/**
- * charAt reference.
- */
-
+var hop = Object.prototype.hasOwnProperty;
 var strCharAt = String.prototype.charAt;
+var toStr = Object.prototype.toString;
 
 /**
  * Returns the character at a given index.
@@ -13,23 +11,10 @@ var strCharAt = String.prototype.charAt;
  * @param {number} index
  * @return {string|undefined}
  */
-
 // TODO: Move to a library
 var charAt = function(str, index) {
   return strCharAt.call(str, index);
 };
-
-/**
- * hasOwnProperty reference.
- */
-
-var hop = Object.prototype.hasOwnProperty;
-
-/**
- * Object.prototype.toString reference.
- */
-
-var toStr = Object.prototype.toString;
 
 /**
  * hasOwnProperty, wrapped as a function.
@@ -70,7 +55,6 @@ var isString = function isString(val) {
  * @param {*} val
  * @return {boolean}
  */
-
 // TODO: Move to a library
 var isArrayLike = function isArrayLike(val) {
   return val != null && (typeof val !== 'function' && typeof val.length === 'number');
@@ -83,12 +67,12 @@ var isArrayLike = function isArrayLike(val) {
  * @name indexKeys
  * @api private
  * @param {} target
- * @param {} pred
+ * @param {Function} pred
  * @return {Array}
  */
-
 var indexKeys = function indexKeys(target, pred) {
   pred = pred || has;
+
   var results = [];
 
   for (var i = 0, len = target.length; i < len; i += 1) {
@@ -101,7 +85,7 @@ var indexKeys = function indexKeys(target, pred) {
 };
 
 /**
- * Returns an array of all the owned
+ * Returns an array of an object's owned keys.
  *
  * @name objectKeys
  * @api private
@@ -110,11 +94,10 @@ var indexKeys = function indexKeys(target, pred) {
  * the resulting array.
  * @return {Array}
  */
-
 var objectKeys = function objectKeys(target, pred) {
   pred = pred || has;
-  var results = [];
 
+  var results = [];
 
   for (var key in target) {
     if (pred(target, key)) {
@@ -157,8 +140,7 @@ var objectKeys = function objectKeys(target, pred) {
  * keys(arr);
  * //=> ['0', '4']
  */
-
-module.exports = function keys(source) {
+var keys = function keys(source) {
   if (source == null) {
     return [];
   }
@@ -175,3 +157,9 @@ module.exports = function keys(source) {
 
   return objectKeys(source);
 };
+
+/*
+ * Exports.
+ */
+
+module.exports = keys;
